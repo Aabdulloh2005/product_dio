@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:lesson81_dio/data/models/category.dart';
 
 class Product {
@@ -19,13 +17,12 @@ class Product {
     required this.images,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
+  Map<String, dynamic>? toMap() {
+    return {
       'title': title,
       'price': price,
       'description': description,
-      'category': category,
+      'categoryId': 1,
       'images': images,
     };
   }

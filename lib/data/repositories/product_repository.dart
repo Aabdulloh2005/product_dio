@@ -13,7 +13,7 @@ class ProductRepository {
   }
 
   Future<Product> addProduct(Product product) async {
-    return _dioProductService.addProduct(product);
+    return await _dioProductService.addProduct(product);
   }
 
   Future<Product> updateProduct(Product product) async {
@@ -21,6 +21,6 @@ class ProductRepository {
   }
 
   Future<Response> deleteProduct(String id) async {
-    return _dioProductService.deleteProduct(id);
+    return await _dioProductService.deleteProduct(id);
   }
 }

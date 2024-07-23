@@ -5,8 +5,8 @@ class DioClient {
 
   DioClient._private() {
     _dio.options
-      ..connectTimeout = Duration(seconds: 3)
-      ..receiveTimeout = Duration(seconds: 3)
+      ..connectTimeout = Duration(seconds: 4)
+      ..receiveTimeout = Duration(seconds: 4)
       ..baseUrl = "https://api.escuelajs.co/api/v1";
   }
 

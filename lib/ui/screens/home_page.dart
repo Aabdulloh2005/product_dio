@@ -61,6 +61,11 @@ class HomePage extends StatelessWidget {
                     },
                   );
                 },
+                onDoubleTap: () {
+                  context
+                      .read<ProductBloc>()
+                      .add(DeleteProductEvent(id: product.id.toString()));
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

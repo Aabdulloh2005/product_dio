@@ -40,6 +40,7 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      scrollable: true,
       title: Text(widget.isEdit ? 'Edit Product' : 'Add Product'),
       content: Form(
         key: _formKey,
@@ -128,6 +129,7 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
+
               !widget.isEdit
                   ? context.read<ProductBloc>().add(
                         AddProductEvent(
@@ -148,12 +150,12 @@ class _ManageProductScreenState extends State<ManageProductScreen> {
                   : context.read<ProductBloc>().add(
                         UpdateProductEvent(
                           product: Product(
-                            id: DateTime.now().millisecondsSinceEpoch,
+                            id: widget.product!.id,
                             title: _title,
                             price: _price,
                             description: _description,
                             category: Category(
-                              id: DateTime.now().millisecondsSinceEpoch,
+                              id: widget.product!.id,
                               name: _categoryName,
                               image: _categoryImage,
                             ),

@@ -22,8 +22,15 @@ class DioProductService {
 
   Future<Product> addProduct(Product product) async {
     try {
-      final response =
-          await _dioClient.add(url: "/products", data: product.toMap());
+      final data = {
+        "title": product.title,
+        "price": product.price,
+        "description": product.description,
+        "categoryId": 1,
+        "images": ["https:"]
+      };
+      final data2 = product.toMap();
+      final response = await _dioClient.add(url: "/products", data: data2);
 
       return Product.fromMap(response.data);
     } catch (e) {
@@ -33,8 +40,21 @@ class DioProductService {
 
   Future<Product> updateProduct(Product product) async {
     try {
+      print(product.id);
+      print(
+        {
+          "title": product.title,
+          "price": product.price.toInt(),
+        },
+      );
       final response = await _dioClient.update(
-          url: "/products/${product.id}", data: product.toMap());
+        url: "/products/${product.id}",
+        data: {
+          "title": product.title,
+          "price": product.price.toInt(),
+        },
+      );
+      print(response);
 
       return Product.fromMap(response.data);
     } catch (e) {
